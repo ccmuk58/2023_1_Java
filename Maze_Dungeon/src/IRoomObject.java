@@ -1,4 +1,4 @@
-public interface RoomObject {
+public interface IRoomObject {
 
     public boolean Active();
     public void PrintInfo();

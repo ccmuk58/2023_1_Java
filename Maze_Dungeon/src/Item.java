@@ -1,12 +1,18 @@
-public abstract class Item implements RoomObject{
-    public abstract void Take();
+public abstract class Item implements IRoomObject {
+
+    protected String name;
+    protected int hp;
+    protected int power;
 
     @Override
     public boolean Active() {
-        Take();
         return true;
     }
 
+    @Override
+    public void PrintInfo() {
+        System.out.println("아이템명 : " + name);
+    }
 
     @Override
     public String toString() {

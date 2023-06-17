@@ -26,16 +26,27 @@ public class GameManager {
         if(nextPos.x < 0 || nextPos.y < 0 || nextPos.x >= maze.GetSize() || nextPos.y >= maze.GetSize())
         {
             System.out.println("이동할 수 없는 위치입니다.");
+            PrintLine();
             maze.print();
             return;
         }
-        if(maze.GetObject(nextPos).Active())
+
+        IRoomObject nextObj = maze.GetObject(nextPos);
+        if(nextObj instanceof Combat)
         {
-            if(maze.GetObject(nextPos) instanceof Combat)
-            {
-                ((Combat) maze.GetObject(nextPos)).Hit(player.GetPower());
-                player.Hit(((Combat) maze.GetObject(nextPos)).GetPower());
-            }
+            ((Combat) nextObj).Hit(player.GetPower());
+            player.Hit(((Combat) nextObj).GetPower());
+        }
+        else if(nextObj instanceof IPowerItem)
+        {
+            nextObj.PrintInfo();
+            player.AddPower(((IPowerItem) nextObj).TakePower());
+            player.PrintInfo();
+
+        }
+
+        if(nextObj.Active())
+        {
             maze.SetObject(playerPos, new EmptyObject());
             maze.SetObject(nextPos, player);
             playerPos = nextPos;
@@ -66,6 +77,7 @@ public class GameManager {
                 System.out.println("잘못된 입력입니다.");
             }
         }
+        PrintLine();
         return new Position(x, y);
     }
 
@@ -92,9 +104,13 @@ public class GameManager {
     {
         System.out.println("---------");
         try {
-            Thread.sleep(500);
+            Thread.sleep(750);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    public Player GetPlayer()
+    {
+        return player;
     }
 }

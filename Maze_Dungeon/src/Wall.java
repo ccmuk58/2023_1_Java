@@ -1,4 +1,4 @@
-public class Wall implements RoomObject{
+public class Wall implements IRoomObject {
     @Override
     public boolean Active() {
         PrintInfo();

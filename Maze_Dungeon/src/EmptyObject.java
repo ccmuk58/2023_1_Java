@@ -1,4 +1,4 @@
-public class EmptyObject implements RoomObject{
+public class EmptyObject implements IRoomObject {
     @Override
     public boolean Active() {
         PrintInfo();

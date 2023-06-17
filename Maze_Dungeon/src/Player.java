@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 
-public class Player extends Combat implements RoomObject{
+public class Player extends Combat implements IRoomObject {
     ArrayList<Item> items = new ArrayList<>();
 
     public Player()
     {
+        name = "player";
         curHp = hp = 5;
         power = 2;
     }
@@ -13,15 +14,17 @@ public class Player extends Combat implements RoomObject{
         return true;
     }
 
-    @Override
-    public void PrintInfo() {
-        System.out.println("이름 : " + name);
-        System.out.println("체력 : " + curHp + "/" + hp);
-        System.out.println("공격력 : " + power);
+    public void PrintInfoDeep() {
+        super.PrintInfo();
+        System.out.println("아이템 수 : " + items.size());
         for (Item item: items) {
             item.PrintInfo();
         }
-        System.out.println("이름 : " + name);
+        GameManager.getInstance().PrintLine();
+    }
+    public void AddItem(Item item)
+    {
+        items.add(item);
     }
     @Override
     public String toString() {

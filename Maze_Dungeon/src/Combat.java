@@ -5,9 +5,16 @@ public abstract class Combat {
     protected int power = 99;
 
     public void Hit(int dmg) {
-        hp -= dmg;
+        curHp -= dmg;
+        if(curHp<0)curHp=0;
+        PrintInfo();
     }
-
+    public void PrintInfo(){
+        System.out.println("이름 : " + name);
+        System.out.println("체력 : " + curHp + "/" + hp);
+        System.out.println("공격력 : " + power);
+        GameManager.getInstance().PrintLine();
+    }
     public int GetHp() {
         return curHp;
     }
@@ -16,8 +23,13 @@ public abstract class Combat {
         return power;
     }
 
-    public void AddHp(int addHp){
-        curHp += addHp;
+    public void AddHp(int point){
+        curHp += point;
         if(curHp>hp) curHp=hp;
     }
+    public void AddPower(int point){
+        power += point;
+    }
+
+
 }
