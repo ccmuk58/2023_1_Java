@@ -123,6 +123,7 @@ public class GameManager {
     }
     public void SetMaze(Maze maze)
     {
-        this.maze = maze;
+        this.maze = new Maze(maze);
     }
+
 }

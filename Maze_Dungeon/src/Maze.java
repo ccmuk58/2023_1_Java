@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Maze {
+public class Maze implements Cloneable{
 
     private ArrayList<ArrayList<IRoomObject>> maze = new ArrayList<>();
 
@@ -12,6 +12,12 @@ public class Maze {
         this.mazeName = mazeName;
         this.size = Integer.parseInt(sizeStr);
         ConvertNamesToMaze(names);
+    }
+    public Maze(Maze origin)
+    {
+         maze = origin.maze;
+         mazeName = origin.mazeName;
+         size = origin.size;
     }
     private void ConvertNamesToMaze(String namesStr) {
         String[] names = namesStr.split(" ");

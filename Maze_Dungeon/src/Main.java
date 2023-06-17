@@ -35,6 +35,12 @@ public class Main {
                 case '1' -> {
                     mazeManager.Show();
                     int mazeIdx = scn.nextInt();
+                    if(mazeIdx > mazeManager.GetSize())
+                    {
+                        System.out.println("잘못된 입력입니다.");
+                        gm.PrintLine();
+                        break;
+                    }
                     gm.SetMaze(mazeManager.GetMaze(mazeIdx));
                     gm.PrintLine();
                     System.out.println("탐험 시작 !!");

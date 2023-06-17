@@ -97,6 +97,11 @@ public class MazeManager {
             throw new RuntimeException(e);
         }
     }
+
+    public int GetSize()
+    {
+        return list.size();
+    }
 }
 
 
