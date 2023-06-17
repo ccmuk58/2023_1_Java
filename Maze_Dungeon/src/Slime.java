@@ -1,6 +1,6 @@
-public class Enemy_Slime extends Enemy {
+public class Slime extends Enemy {
 
-    public Enemy_Slime() {
+    public Slime() {
         name = "Slime";
         curHp = hp = 3;
         power = 1;

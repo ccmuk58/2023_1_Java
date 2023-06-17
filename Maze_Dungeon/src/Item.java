@@ -18,4 +18,8 @@ public abstract class Item implements IRoomObject {
     public String toString() {
         return "I";
     }
+
+    public String GetName(){
+        return name;
+    }
 }

@@ -1,4 +1,5 @@
-public class EmptyObject implements IRoomObject {
+public class Empty implements IRoomObject {
+    private String name = "Empty";
     @Override
     public boolean Active() {
         PrintInfo();
@@ -14,5 +15,9 @@ public class EmptyObject implements IRoomObject {
     @Override
     public String toString() {
         return "O";
+    }
+
+    public String GetName(){
+        return name;
     }
 }

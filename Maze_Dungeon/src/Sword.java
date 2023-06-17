@@ -1,5 +1,5 @@
-public class Item_Sword extends Item implements IPowerItem{
-    public Item_Sword()
+public class Sword extends Item implements IPowerItem{
+    public Sword()
     {
         name = "Sword";
         power = 1;

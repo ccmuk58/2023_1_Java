@@ -20,4 +20,7 @@ public abstract class Enemy extends Combat implements IRoomObject {
     public String toString() {
         return "E";
     }
+    public String GetName(){
+        return name;
+    }
 }

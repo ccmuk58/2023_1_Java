@@ -1,4 +1,5 @@
 public class Wall implements IRoomObject {
+    private String name ="Wall";
     @Override
     public boolean Active() {
         PrintInfo();
@@ -8,11 +9,16 @@ public class Wall implements IRoomObject {
     @Override
     public void PrintInfo() {
         System.out.println("벽은 지나갈 수 없어!!");
+        GameManager.getInstance().PrintLine();
     }
 
     @Override
     public String toString()
     {
         return "W";
+    }
+
+    public String GetName(){
+        return name;
     }
 }

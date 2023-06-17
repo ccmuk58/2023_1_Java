@@ -2,17 +2,39 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Maze {
+
     private ArrayList<ArrayList<IRoomObject>> maze = new ArrayList<>();
 
-    public Maze() {
-        ArrayList<ArrayList<IRoomObject>> tempMaze = new ArrayList<>();
-        tempMaze.add(new ArrayList<>(Arrays.asList(new Player(), new Enemy_Slime(), new Item_Sword())));
-        tempMaze.add(new ArrayList<>(Arrays.asList(new Enemy_Slime(), new Wall(), new Wall())));
-        tempMaze.add(new ArrayList<>(Arrays.asList(new EmptyObject(), new Enemy_Slime(), new EmptyObject())));
-        maze = tempMaze;
+    private String mazeName;
+    private int size;
+
+    public Maze(String mazeName, String sizeStr, String names) {
+        this.mazeName = mazeName;
+        this.size = Integer.parseInt(sizeStr);
+        ConvertNamesToMaze(names);
+    }
+    private void ConvertNamesToMaze(String namesStr) {
+        String[] names = namesStr.split(" ");
+        for(int i=0; i<size; i++)
+        {
+            ArrayList<IRoomObject> tempMaze = new ArrayList<>();
+            for(int j=0; j<size; j++)
+            {
+                try{
+                    Class<?> tempClass = Class.forName(names[i*size+j]);
+                    Object tempRoom = tempClass.newInstance();
+                    tempMaze.add((IRoomObject) tempRoom);
+
+                }catch (Exception e)
+                {
+                    System.out.println("미로 변환 중 오류 발생");
+                }
+            }
+            maze.add(tempMaze);
+        }
     }
 
-    public void print() {
+    public void Print() {
         for (ArrayList<IRoomObject> row : maze) {
             for (IRoomObject obj : row) {
                 System.out.print(obj.toString());
@@ -32,7 +54,26 @@ public class Maze {
     }
     public int GetSize()
     {
-        return maze.get(0).size();
+        return size;
     }
+
+    public String GetName() {
+        return mazeName;
+    }
+    public String GetObjectNames()
+    {
+        String names = "";
+        int rowCnt=0;
+        for (ArrayList<IRoomObject> row : maze)
+        {
+            for(IRoomObject room : row)
+            {
+                names = names + room.GetName() + " ";
+            }
+        }
+        return names;
+    }
+
+
 
 }

@@ -3,13 +3,19 @@ import java.util.Scanner;
 public class GameManager {
 
     private static GameManager instance = null;
-    private Player player = new Player();
-    private Position playerPos = new Position();
-    private Maze maze = new Maze();
+    private Player player;
+    private Position playerPos;
+    private Maze maze;
 
     private GameManager() {
     }
 
+    public void Init()
+    {
+        this.player = new Player();
+        this.playerPos = new Position();
+        maze.SetObject(playerPos, player);
+    }
     public static GameManager getInstance() {
         if (instance == null) {
             instance = new GameManager();
@@ -27,7 +33,6 @@ public class GameManager {
         {
             System.out.println("이동할 수 없는 위치입니다.");
             PrintLine();
-            maze.print();
             return;
         }
 
@@ -44,32 +49,37 @@ public class GameManager {
             player.PrintInfo();
 
         }
+        else if(nextObj instanceof IHpItem)
+        {
+            nextObj.PrintInfo();
+            player.AddHp(((IHpItem) nextObj).TakeHp());
+            player.PrintInfo();
+        }
 
         if(nextObj.Active())
         {
-            maze.SetObject(playerPos, new EmptyObject());
+            maze.SetObject(playerPos, new Empty());
             maze.SetObject(nextPos, player);
             playerPos = nextPos;
         }
-        maze.print();
     }
     private Position InputMove() {
         int x = 0, y = 0;
         Scanner scn = new Scanner(System.in);
         switch (scn.next().charAt(0)) {
-            case 'a' -> {
+            case 'a','ㅁ' -> {
                 x = -1;
                 y = 0;
             }
-            case 'd' -> {
+            case 'd','ㅇ' -> {
                 x = 1;
                 y = 0;
             }
-            case 'w' -> {
+            case 'w','ㅈ' -> {
                 x = 0;
                 y = -1;
             }
-            case 's' -> {
+            case 's','ㄴ' -> {
                 x = 0;
                 y = 1;
             }
@@ -85,6 +95,7 @@ public class GameManager {
     {
         if(playerPos.x == maze.GetSize()-1 && playerPos.y == maze.GetSize()-1) {
             System.out.println("게임을 클리어 했습니다!");
+            PrintLine();
             return true;
         }
         else
@@ -95,6 +106,7 @@ public class GameManager {
         if(player.GetHp() <= 0)
         {
             System.out.println("게임 오버 ,,,");
+            PrintLine();
             return true;
         }
         else
@@ -109,8 +121,8 @@ public class GameManager {
             e.printStackTrace();
         }
     }
-    public Player GetPlayer()
+    public void SetMaze(Maze maze)
     {
-        return player;
+        this.maze = maze;
     }
 }

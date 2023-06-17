@@ -6,7 +6,7 @@ public class Player extends Combat implements IRoomObject {
     public Player()
     {
         name = "player";
-        curHp = hp = 5;
+        curHp = hp = 10;
         power = 2;
     }
     @Override
@@ -29,6 +29,10 @@ public class Player extends Combat implements IRoomObject {
     @Override
     public String toString() {
         return "P";
+    }
+
+    public String GetName(){
+        return name;
     }
 
 }
