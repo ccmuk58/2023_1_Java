@@ -2,8 +2,9 @@ public abstract class Item implements RoomObject{
     public abstract void Take();
 
     @Override
-    public void Active() {
+    public boolean Active() {
         Take();
+        return true;
     }
 
 

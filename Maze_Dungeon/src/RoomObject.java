@@ -1,3 +1,5 @@
 public interface RoomObject {
-    public void Active();
+
+    public boolean Active();
+    public void PrintInfo();
 }

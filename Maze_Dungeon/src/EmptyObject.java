@@ -1,7 +1,14 @@
 public class EmptyObject implements RoomObject{
     @Override
-    public void Active() {
-        System.out.println("고요,,");
+    public boolean Active() {
+        PrintInfo();
+        return true;
+    }
+
+    @Override
+    public void PrintInfo() {
+        System.out.println("빈 방이다.");
+        GameManager.getInstance().PrintLine();
     }
 
     @Override

@@ -23,16 +23,23 @@ public class GameManager {
     public void Move() {
         Position nextPos = Position.Sum(playerPos, InputMove()) ;
         Wall wall = new Wall();
-        if(nextPos.x < 0 || nextPos.y < 0 || nextPos.x >= maze.GetSize() || nextPos.y >= maze.GetSize() || maze.GetObject(nextPos) instanceof Wall)
+        if(nextPos.x < 0 || nextPos.y < 0 || nextPos.x >= maze.GetSize() || nextPos.y >= maze.GetSize())
         {
             System.out.println("이동할 수 없는 위치입니다.");
             maze.print();
             return;
         }
-        maze.SetObject(playerPos, new EmptyObject());
-        playerPos = nextPos;
-        maze.GetObject(playerPos).Active();
-        maze.SetObject(playerPos, new Player());
+        if(maze.GetObject(nextPos).Active())
+        {
+            if(maze.GetObject(nextPos) instanceof Combat)
+            {
+                ((Combat) maze.GetObject(nextPos)).Hit(player.GetPower());
+                player.Hit(((Combat) maze.GetObject(nextPos)).GetPower());
+            }
+            maze.SetObject(playerPos, new EmptyObject());
+            maze.SetObject(nextPos, player);
+            playerPos = nextPos;
+        }
         maze.print();
     }
     private Position InputMove() {
@@ -62,5 +69,32 @@ public class GameManager {
         return new Position(x, y);
     }
 
-
+    public boolean GameClear()
+    {
+        if(playerPos.x == maze.GetSize()-1 && playerPos.y == maze.GetSize()-1) {
+            System.out.println("게임을 클리어 했습니다!");
+            return true;
+        }
+        else
+            return false;
+    }
+    public boolean GameOver()
+    {
+        if(player.GetHp() <= 0)
+        {
+            System.out.println("게임 오버 ,,,");
+            return true;
+        }
+        else
+            return false;
+    }
+    public void PrintLine()
+    {
+        System.out.println("---------");
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

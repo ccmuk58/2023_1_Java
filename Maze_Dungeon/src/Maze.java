@@ -6,7 +6,7 @@ public class Maze {
 
     public Maze() {
         ArrayList<ArrayList<RoomObject>> tempMaze = new ArrayList<>();
-        tempMaze.add(new ArrayList<>(Arrays.asList(new EmptyObject(), new Enemy_Slime(), new Item_Sword())));
+        tempMaze.add(new ArrayList<>(Arrays.asList(new Player(), new Enemy_Slime(), new Item_Sword())));
         tempMaze.add(new ArrayList<>(Arrays.asList(new Enemy_Slime(), new Wall(), new Wall())));
         tempMaze.add(new ArrayList<>(Arrays.asList(new EmptyObject(), new Enemy_Slime(), new EmptyObject())));
         maze = tempMaze;
@@ -19,6 +19,7 @@ public class Maze {
             }
             System.out.println();
         }
+        GameManager.getInstance().PrintLine();
     }
 
     public RoomObject GetObject(Position pos)

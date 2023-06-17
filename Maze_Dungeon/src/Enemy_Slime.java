@@ -1,8 +1,9 @@
-public class Enemy_Slime extends Enemy{
+public class Enemy_Slime extends Enemy {
 
-    @Override
-    public void Fight() {
-        
+    public Enemy_Slime() {
+        name = "Slime";
+        hp = 3;
+        power = 1;
     }
 
 }

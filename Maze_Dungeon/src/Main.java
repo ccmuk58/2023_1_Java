@@ -3,11 +3,11 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+        GameManager gm = GameManager.getInstance();
 
+        gm.GetMaze().print();
 
-        GameManager.getInstance().GetMaze().print();
-
-        while(true)
+        while(!gm.GameClear() && !gm.GameOver())
         {
             GameManager.getInstance().Move();
         }
