@@ -64,17 +64,15 @@ public class MazeManager {
         }
 
         try {
-            FileWriter writer = new FileWriter(filename); // 기록용도로 파일 생성
+            FileWriter writer = new FileWriter(filename);
             BufferedWriter buf = new BufferedWriter(writer);
-            // buf를 이용해서 데이터를 파일에 기록하기
-            for(Maze maze : list) {  // maze 객체 하나씩 파일에 기록하기
-                // CSV 파일 형식으로 기록
-                buf.write(maze.GetName() + ',');  // 여행1,
-                buf.write(maze.GetSize() + ",");  // 여행1,
-                buf.write(maze.GetObjectNames() + "");  // 여행1,
-                buf.newLine();  // 엔터. 다음 줄로 내림.
+            for(Maze maze : list) {
+                buf.write(maze.GetName() + ',');
+                buf.write(maze.GetSize() + ",");
+                buf.write(maze.GetObjectNames() + "");
+                buf.newLine();
             }
-            buf.close();  // 파일 닫기
+            buf.close();
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -86,7 +84,7 @@ public class MazeManager {
             String line;
             while ((line = buf.readLine()) != null) {
                 StringTokenizer tokenizer = new StringTokenizer(line, ",");
-                String mazeName = tokenizer.nextToken(); // 여행1
+                String mazeName = tokenizer.nextToken();
                 String size = tokenizer.nextToken();
                 String names = tokenizer.nextToken();
                 Add(new Maze(mazeName, size, names));
