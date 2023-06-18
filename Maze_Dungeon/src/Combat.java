@@ -1,5 +1,5 @@
-public abstract class Combat {
-    public String name = "unknown";
+public abstract class Combat implements IRoomObject {
+    protected String name = "unknown";
     protected int hp = 99;
     protected int curHp = 99;
     protected int power = 99;

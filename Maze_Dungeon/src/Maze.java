@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Maze implements Cloneable{
+public class Maze{
 
     private ArrayList<ArrayList<IRoomObject>> maze = new ArrayList<>();
 

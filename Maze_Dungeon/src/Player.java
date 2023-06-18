@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-public class Player extends Combat implements IRoomObject {
-    ArrayList<Item> items = new ArrayList<>();
+public class Player extends Combat {
+    private ArrayList<Item> items = new ArrayList<>();
 
     public Player()
     {

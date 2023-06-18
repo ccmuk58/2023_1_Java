@@ -1,4 +1,4 @@
-public abstract class Enemy extends Combat implements IRoomObject {
+public abstract class Enemy extends Combat {
     @Override
     public boolean Active() {
         if(curHp<=0){
