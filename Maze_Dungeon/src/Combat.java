@@ -13,7 +13,7 @@ public abstract class Combat {
         System.out.println("이름 : " + name);
         System.out.println("체력 : " + curHp + "/" + hp);
         System.out.println("공격력 : " + power);
-        GameManager.getInstance().PrintLine();
+        GameManager.GetInstance().PrintLine();
     }
     public int GetHp() {
         return curHp;

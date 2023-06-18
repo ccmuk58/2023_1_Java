@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Maze implements Cloneable{
 
@@ -47,7 +46,7 @@ public class Maze implements Cloneable{
             }
             System.out.println();
         }
-        GameManager.getInstance().PrintLine();
+        GameManager.GetInstance().PrintLine();
     }
 
     public IRoomObject GetObject(Position pos)

@@ -20,7 +20,7 @@ public class Player extends Combat implements IRoomObject {
         for (Item item: items) {
             item.PrintInfo();
         }
-        GameManager.getInstance().PrintLine();
+        GameManager.GetInstance().PrintLine();
     }
     public void AddItem(Item item)
     {

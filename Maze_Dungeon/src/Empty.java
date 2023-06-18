@@ -9,7 +9,7 @@ public class Empty implements IRoomObject {
     @Override
     public void PrintInfo() {
         System.out.println("빈 방이다.");
-        GameManager.getInstance().PrintLine();
+        GameManager.GetInstance().PrintLine();
     }
 
     @Override

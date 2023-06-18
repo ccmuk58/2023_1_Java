@@ -12,12 +12,8 @@ public class Main {
         System.out.println("3: 크레딧");
         System.out.println("4: 게임 종료");
     }
-    public static void SelectMaze()
-    {
-
-    }
     public static void main(String[] args) {
-        GameManager gm = GameManager.getInstance();
+        GameManager gm = GameManager.GetInstance();
         Scanner scn = new Scanner(System.in);
         MazeManager mazeManager = new MazeManager("mazeData.txt");
         mazeManager.Load();
@@ -56,7 +52,7 @@ public class Main {
                     while(!gm.GameClear() && !gm.GameOver())
                     {
                         gm.GetMaze().Print();
-                        GameManager.getInstance().Move();
+                        GameManager.GetInstance().Move();
                     }
                 }
                 case '2' ->

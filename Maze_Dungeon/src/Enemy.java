@@ -3,7 +3,7 @@ public abstract class Enemy extends Combat implements IRoomObject {
     public boolean Active() {
         if(curHp<=0){
             System.out.println(name + "을(를) 해치웠다!!");
-            GameManager.getInstance().PrintLine();
+            GameManager.GetInstance().PrintLine();
             return true;
         }
         return false;
@@ -12,7 +12,7 @@ public abstract class Enemy extends Combat implements IRoomObject {
     @Override
     public void Hit(int dmg) {
         System.out.println(name + "을(를) 공격했다.");
-        GameManager.getInstance().PrintLine();
+        GameManager.GetInstance().PrintLine();
         super.Hit(dmg);
     }
 

@@ -16,7 +16,7 @@ public class GameManager {
         this.playerPos = new Position();
         maze.SetObject(playerPos, player);
     }
-    public static GameManager getInstance() {
+    public static GameManager GetInstance() {
         if (instance == null) {
             instance = new GameManager();
         }
