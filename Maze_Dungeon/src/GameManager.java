@@ -123,7 +123,7 @@ public class GameManager {
     }
     public void SetMaze(Maze maze)
     {
-        this.maze = new Maze(maze);
+        this.maze = new Maze(maze.GetName(), String.valueOf(maze.GetSize()), maze.GetObjectNames());
     }
 
 }

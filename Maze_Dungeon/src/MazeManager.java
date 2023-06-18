@@ -45,24 +45,6 @@ public class MazeManager {
         return list.get(index-1);
     }
     public void Save() {
-        StringBuilder prevString = new StringBuilder();
-        try {
-            FileReader reader = new FileReader(filename);
-            BufferedReader buf = new BufferedReader(reader);
-            String line;
-            while ((line = buf.readLine()) != null) {
-                StringTokenizer tokenizer = new StringTokenizer(line, ",");
-                prevString.append(tokenizer.nextToken()).append(",");
-                prevString.append(tokenizer.nextToken()).append(",");
-                prevString.append(tokenizer.nextToken());
-            }
-            prevString.append("\n");
-        } catch(FileNotFoundException e) {
-            System.out.println(filename + "파일이 없습니다.");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
         try {
             FileWriter writer = new FileWriter(filename);
             BufferedWriter buf = new BufferedWriter(writer);
@@ -101,12 +83,3 @@ public class MazeManager {
         return list.size();
     }
 }
-
-
-
-
-
-
-
-
-

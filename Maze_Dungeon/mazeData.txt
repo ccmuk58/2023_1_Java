@@ -1,2 +1,4 @@
-소환사의 협곡,3,Empty Slime Sword Slime Wall Wall Slime Empty Empty
-아제로스,5,Empty Empty Wall Milk HpPotion Wolf Slime Slime Troll Empty Sword Empty Sword Wall Sword Wolf Wall Empty Wall Troll ShotGun Wall HpPotion Wall Empty
+소환사의 협곡,3,Empty Slime Sword Slime Wall Wall Slime Empty Empty 
+아제로스,5,Empty Empty Wall Milk HpPotion Wolf Slime Slime Troll Empty Sword Empty Sword Wall Sword Wolf Wall Empty Wall Troll ShotGun Wall HpPotion Wall Empty 
+교수님의 연구실,2,Empty Wolf Milk Empty 
+asd,2,Empty Empty Empty Empty 

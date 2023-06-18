@@ -1,7 +1,6 @@
 public abstract class Item implements IRoomObject {
 
     protected String name;
-    protected int hp;
     protected int power;
 
     @Override

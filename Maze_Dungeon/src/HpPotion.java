@@ -1,7 +1,7 @@
 public class HpPotion extends Item implements IHpItem{
     public HpPotion()
     {
-        name = "HealthPotion";
+        name = "HpPotion";
         power = 3;
     }
     @Override
